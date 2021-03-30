@@ -14,8 +14,29 @@ namespace ApiClient.Models
 {
     public class ClientModel : IClientModel
     {
+        public List<Order> GetOrders(string url, Tokens tokens)
+        {
+            WebRequest request = WebRequest.Create($"{url}/orders?" +
+                $"oauth_token={tokens.AccessToken}");
+            request.Method = "GET";
+            string content;
 
-        public void LogIn(string url, string public_key, string private_key)
+            WebResponse response = request.GetResponse();
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    content = reader.ReadToEnd();
+                }
+            }
+
+            var reply = JsonConvert.DeserializeObject<OrdersReply>(content);
+
+            return reply.Orders;
+        }
+
+        public Tokens LogIn(string url, string public_key, string private_key)
         {
             WebRequest request = WebRequest.Create($"{url}/oauth/requesttoken");
             request.Method = "GET";
@@ -53,6 +74,8 @@ namespace ApiClient.Models
             }
 
             tokens = JsonConvert.DeserializeObject<Tokens>(content);
+
+            return tokens;
         }
         
     }

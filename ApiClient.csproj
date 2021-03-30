@@ -103,7 +103,9 @@
     </Compile>
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\IClientModel.cs" />
-    <Compile Include="Models\LogInResponse.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrdersReply.cs" />
+    <Compile Include="Models\Tokens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +114,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Client\Orders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

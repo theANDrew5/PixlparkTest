@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ApiClient.Models
 {
     public interface IClientModel
     {
-        void LogIn(string url, string public_key, string private_key);
+        Tokens LogIn(string url, string public_key, string private_key);
+
+        List<Order> GetOrders(string url, Tokens tokens);
     }
 }

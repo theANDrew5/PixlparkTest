@@ -22,9 +22,16 @@ namespace ApiClient.Controllers
             return View();
         }
 
-        public void Login(string public_key, string private_key)
+        public ActionResult Login(string public_key, string private_key)
         {
-            _clientModel.LogIn(_url, public_key, private_key);
+            var tokens = _clientModel.LogIn(_url, public_key, private_key);
+            return RedirectToAction("Orders",tokens);
+        }
+
+        public ActionResult Orders (Tokens tokens)
+        {
+            ViewBag.Orders = _clientModel.GetOrders(_url,tokens);
+            return View();
         }
 
 
