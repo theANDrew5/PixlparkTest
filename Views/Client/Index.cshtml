@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Подключение к API Pixlparrk</h1>
+    <form>
+        <p><input type="text" name="public_key" value="38cd79b5f2b2486d86f562e3c43034f8" required/></p>
+        <p><input type="text" name="private_key" value="8e49ff607b1f46e1a5e8f6ad5d312a80" required/></p>
+        <p>
+            <button type="submit" formmethod="get" formaction="Login">Отправить</button>
+            <button type="reset">Отмена</button>
+        </p>
+    </form>
+</body>
+</html>
+
